@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class CrackingTheCodingInterview {
+public class Algorithms {
 	
 	// Quicksort
 	static void myQuickSort(int[] a, int lo, int hi){
