@@ -1,10 +1,10 @@
+import java.util.*;
 public class CrackingTheCodingInterview {
-
+	
 	// Binary Search Algorithm
 	static int myBinarySearch(int[] a, int query){
 		int lo = 0, hi = a.length-1;
-		int mid = (lo + hi) / 2;
-		
+		int mid = (lo + hi) / 2;	
 		while(lo <= hi && a[mid] != query){
 			if(a[mid] < query){
 				lo = mid + 1;
@@ -47,10 +47,25 @@ public class CrackingTheCodingInterview {
 	}
 	// Given an array of distinct integer values, find the number of pairs that have the difference k.
 	// ex: Input: {1, 7, 5, 9, 2, 12, 3}  k = 1 -> there are three pairs (1,3), (3,5), (7,9)
-	static int[] getPairsWithKDifference(int k, int[] arr){
-		
-		
-		return null;
+	static ArrayList<String> getPairsWithKDifference(int k, int[] arr){
+		int index, index2;
+		ArrayList<String>pairs = new ArrayList<>();
+		for(int i = 0; i < arr.length; i++){
+			index = -1;
+			index2 = -1;
+			index = myBinarySearch(arr, arr[i] + k);
+			index2 = myBinarySearch(arr, arr[i] - k);
+			if (index != -1){
+				//System.out.println(arr[index]);
+				String pairFound = "(" + arr[i] + "," + arr[index] + ")";
+				pairs.add(pairFound);
+			}
+			if (index2 != -1){
+				String pairFound = "(" + arr[i] + "," + arr[index2] + ")";
+				pairs.add(pairFound);
+			}
+		}
+		return pairs;
 	}
 	public static void main(String[] args) {
 		// K-Difference of array
