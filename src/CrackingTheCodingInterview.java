@@ -87,14 +87,27 @@ public class CrackingTheCodingInterview {
 				answer += pairFound;
 			}
 		}
-		
 		return answer;
 	}
+	//	String Permutation in a longer string
+	//	Given a smaller string s and a bigger string b, design an algorithm to find all permutations of the shorter
+	//	string within the longer one. Print all location of each permutation
+	//  example: find s:abbc occurences in cbabadcbababbc
+	static void findAllPermutationsInString(String s, String b){
+
+	}
+	
+	
 	public static void main(String[] args) {
-		// K-Difference of array
-		int[] arr = {1, 7, 5, 9, 2, 12, 3};
+//		K-Difference of array
+/*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
 		int k = 2;
-//		System.out.println(getPairsWithKDifference(k, arr));
-	System.out.println(getPairsWithKDifferenceOptimal(k, arr));
+		System.out.println(getPairsWithKDifference(k, arr));
+		System.out.println(getPairsWithKDifferenceOptimal(k, arr));
+*/	
+//		String Permutation 
+		
+
+
 	}
 }
