@@ -81,8 +81,7 @@ public class CrackingTheCodingInterview {
 				index = ht.get( (arr[i]+ k) );
 				pairFound = "(" + arr[i] + "," + arr[index] + "), ";
 				answer += pairFound;
-			}
-			if(ht.containsKey(arr[i] - k)){
+			}else if(ht.containsKey(arr[i] - k)){
 				index = ht.get( (arr[i] - k) );
 				pairFound = "(" + arr[i] + "," + arr[index] + "), ";
 				answer += pairFound;
@@ -96,6 +95,6 @@ public class CrackingTheCodingInterview {
 		int[] arr = {1, 7, 5, 9, 2, 12, 3};
 		int k = 2;
 //		System.out.println(getPairsWithKDifference(k, arr));
-		System.out.println(getPairsWithKDifferenceOptimal(k, arr));
+	System.out.println(getPairsWithKDifferenceOptimal(k, arr));
 	}
 }
