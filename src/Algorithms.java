@@ -117,8 +117,20 @@ public class Algorithms {
 		} // O(S + (B * S) + S) ~ Big Oh of O(S)
 		return answer;
 	}
-	
-	
+	static void generatePermutations(String s){
+		generatePermutation(s, "");
+	}
+	static void generatePermutation(String str, String prefix){
+		// base case 
+		if (str.length() == 0){
+			System.out.println(prefix);
+		} else {
+			for (int i = 0; i < str.length(); i++){
+				String remainder = str.substring(0,i) + str.substring(i+1);
+				generatePermutation(remainder, prefix + str.charAt(i));
+			}
+		}
+	} // O(n!) Brute Force
 	public static void main(String[] args) {
 //	K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
@@ -132,8 +144,9 @@ public class Algorithms {
 		String b = "cbabadcbbabbcbabaabccbabc";
 		System.out.println(findAllPermutationsInString(s, b));
 */
-		
-		
+
+// Print All Permutations of a Given String
+//		generatePermutations("play");
 
 	}
 }
