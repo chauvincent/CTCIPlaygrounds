@@ -110,11 +110,11 @@ public class Algorithms {
 				temp += bArray[i+j];
 			} // Window Size == S
 			if(Arrays.equals(charBucket, charBucket2)){
-				answer += temp + " ";
+				answer += " " + temp + " ";
 			} else {
 				temp = "";
 			}
-		} // O(S + (B - S) + S) ~ Big Oh of O(S)
+		} // O(S + (B * S) + S) ~ Big Oh of O(S)
 		return answer;
 	}
 	
@@ -128,9 +128,11 @@ public class Algorithms {
 */	
 		
 //	String Permutation (should have 7 permutations of s inside b)
-		String s = "abbc";
+/*		String s = "abbc";
 		String b = "cbabadcbbabbcbabaabccbabc";
 		System.out.println(findAllPermutationsInString(s, b));
+*/
+		
 		
 
 	}
