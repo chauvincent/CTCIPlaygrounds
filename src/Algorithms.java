@@ -94,25 +94,28 @@ public class Algorithms {
 	//  example: find s:abbc occurences in cbabadcbababbc
 	static String findAllPermutationsInString(String s, String b){
 		int charBucket[] = new int[25];
+		String answer = "";
 		s = s.toLowerCase(); b = b.toLowerCase();
 		for(char c : s.toCharArray()){
 			int index = c - 'a';
 			charBucket[index] += 1;
-		}
+		}  // Constant of size O(S)
 		char bArray[] = b.toCharArray();
 		int windowSize = s.length();
-		Boolean found = false;
+		String temp = "";
 		for (int i = 0; i < b.length()-windowSize+1; i++){
-			System.out.println("new window");
+			int charBucket2[] = new int[25];
 			for(int j = 0; j < windowSize; j++){
-				System.out.print(bArray[i+j]);
+				charBucket2[bArray[i+j] - 'a'] += 1;
+				temp += bArray[i+j];
+			} // Window Size == S
+			if(Arrays.equals(charBucket, charBucket2)){
+				answer += temp + " ";
+			} else {
+				temp = "";
 			}
-			System.out.println("");
-		}
-		
-		
-		
-		return "";
+		} // O(S + (B - S) + S) ~ Big Oh of O(S)
+		return answer;
 	}
 	
 	
