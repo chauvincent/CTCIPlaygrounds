@@ -52,7 +52,6 @@ public class Algorithms {
 		int index, index2;
 		String pairFound;
 		String answer = "";
-		//ArrayList<String>pairs = new ArrayList<>();
 		for(int i = 0; i < arr.length; i++){
 			index = -1;
 			index2 = -1;
@@ -93,21 +92,43 @@ public class Algorithms {
 	//	Given a smaller string s and a bigger string b, design an algorithm to find all permutations of the shorter
 	//	string within the longer one. Print all location of each permutation
 	//  example: find s:abbc occurences in cbabadcbababbc
-	static void findAllPermutationsInString(String s, String b){
-
+	static String findAllPermutationsInString(String s, String b){
+		int charBucket[] = new int[25];
+		s = s.toLowerCase(); b = b.toLowerCase();
+		for(char c : s.toCharArray()){
+			int index = c - 'a';
+			charBucket[index] += 1;
+		}
+		char bArray[] = b.toCharArray();
+		int windowSize = s.length();
+		Boolean found = false;
+		for (int i = 0; i < b.length()-windowSize+1; i++){
+			System.out.println("new window");
+			for(int j = 0; j < windowSize; j++){
+				System.out.print(bArray[i+j]);
+			}
+			System.out.println("");
+		}
+		
+		
+		
+		return "";
 	}
 	
 	
 	public static void main(String[] args) {
-//		K-Difference of array
+//	K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
 		int k = 2;
 		System.out.println(getPairsWithKDifference(k, arr));
 		System.out.println(getPairsWithKDifferenceOptimal(k, arr));
 */	
-//		String Permutation 
 		
-
+//	String Permutation (should have 7 permutations of s inside b)
+		String s = "abbc";
+		String b = "cbabadcbbabbcbabaabccbabc";
+		System.out.println(findAllPermutationsInString(s, b));
+		
 
 	}
 }
