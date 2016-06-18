@@ -134,6 +134,23 @@ public class Algorithms {
 			}
 		}
 	} // O(n!) Brute Force
+	
+	// 1.1 isUnique, cannot use addition DS
+	static Boolean isUnique(String s){
+		if(s.length() > 128) return false;
+		
+		int []characterBucket = new int[128];
+		for(char c : s.toCharArray()){
+			if(characterBucket[c] != 0){
+				return false;
+			}else{
+				characterBucket[c]++;
+			}	
+		}
+		return true;
+	}
+	
+	
 	public static void main(String[] args) {
 //	K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
@@ -151,7 +168,11 @@ public class Algorithms {
 // Print All Permutations of a Given String
 //		generatePermutations("tag");
 		
-
-
+//						CTCI Chapter 1 Problems :)
+/*
+	String s = "in my mind in my head, this is where we all came from...";
+	String s2 = "abcdefg";
+	System.out.println(isUnique(s2));
+*/
 	}
 }
