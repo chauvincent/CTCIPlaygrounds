@@ -166,21 +166,46 @@ public class Algorithms {
 			if(inputString[i] == ' ')
 				spacesCount++;
 		}
-		char []outputArr = new char[n + (spacesCount * 3) + 1];
-		for(int j = 0; j < n; j++){
-			if(inputString[j]!=' '){
-				outputArr[j] = inputString[j];
-			}else{
-				outputArr[j] = '%';
-				j = j + 1;
-				outputArr[j] = '2';
-				j = j + 2;
-				outputArr[j] = '0';
+		int newSize = n + (spacesCount * 3) + 1;
+		System.out.println("New Size: " + newSize);
+		
+		char []outputArr = new char[newSize];
+		int spacesProcessed = 0;
+		int index = 0, index2 = 0;
+		System.out.println("Spaces Counted: " + spacesCount);
+		
+		while(spacesProcessed != spacesCount){
+			while(inputString[index] != ' '){
+				outputArr[index2] = inputString[index];
+				index2++;
+				index++;
 			}
+			outputArr[index2+1] = '%';
+
+			outputArr[index2+2] = '2';
+
+			outputArr[index2+3] = '0';
+			index2 += 4;
+			index++;
+			System.out.println("index1: " + index);
+
+			System.out.println("index2: " + index2);
+			for(int i = 0; i < outputArr.length; i++)
+				System.out.print(outputArr[i]);
+			System.out.println("\n===end itr===");
+			
+			
+			spacesProcessed++;
 		}
-		for(char c : outputArr){
-			System.out.print(c);
+		while(index2 != newSize){
+			outputArr[index2] = inputString[index];
+			index++;
+			index2++;
 		}
+		
+		for(int i = 0; i < outputArr.length; i++)
+			System.out.print(outputArr[i]);
+
 	}
 	
 	public static void main(String[] args) {
