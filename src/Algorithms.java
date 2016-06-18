@@ -70,7 +70,9 @@ public class Algorithms {
 	}
 	static String getPairsWithKDifferenceOptimal(int k, int[] arr){
 		Hashtable<Integer, Integer> ht = new Hashtable<Integer, Integer>();
-		String answer = "", pairFound = "";
+		//String answer = "", pairFound = "";
+		StringBuilder answer = new StringBuilder();
+		String pairFound = "", pairFound2 = "";
 		int index = -1;
 		for(int i = 0; i < arr.length; i++){
 			ht.put(arr[i], i);
@@ -78,15 +80,16 @@ public class Algorithms {
 		for(int i = 0; i < arr.length; i++){
 			if(ht.containsKey(  arr[i]+k )){
 				index = ht.get( (arr[i]+ k) );
-				pairFound = "(" + arr[i] + "," + arr[index] + "), ";
-				answer += pairFound;
+				pairFound = ("(" + arr[i] + "," + arr[index] + "), ");
+				answer.append(pairFound);
+				//answer += pairFound;
 			}else if(ht.containsKey(arr[i] - k)){
 				index = ht.get( (arr[i] - k) );
-				pairFound = "(" + arr[i] + "," + arr[index] + "), ";
-				answer += pairFound;
+				pairFound2 = ("(" + arr[i] + "," + arr[index] + "), ");
+				answer.append(pairFound2);
 			}
 		}
-		return answer;
+		return answer.toString();
 	}
 	//	String Permutation in a longer string
 	//	Given a smaller string s and a bigger string b, design an algorithm to find all permutations of the shorter
@@ -94,7 +97,8 @@ public class Algorithms {
 	//  example: find s:abbc occurences in cbabadcbababbc
 	static String findAllPermutationsInString(String s, String b){
 		int charBucket[] = new int[25];
-		String answer = "";
+		//String answer = "";
+		StringBuilder answer = new StringBuilder();
 		s = s.toLowerCase(); b = b.toLowerCase();
 		for(char c : s.toCharArray()){
 			int index = c - 'a';
@@ -110,12 +114,12 @@ public class Algorithms {
 				temp += bArray[i+j];
 			} // Window Size == S
 			if(Arrays.equals(charBucket, charBucket2)){
-				answer += " " + temp + " ";
+				answer.append( " " + temp + " ");
 			} else {
 				temp = "";
 			}
 		} // O(S + (B * S) + S) ~ Big Oh of O(S)
-		return answer;
+		return answer.toString();
 	}
 	static void generatePermutations(String s){
 		generatePermutation(s, "");
@@ -135,7 +139,7 @@ public class Algorithms {
 //	K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
 		int k = 2;
-		System.out.println(getPairsWithKDifference(k, arr));
+//		System.out.println(getPairsWithKDifference(k, arr));
 		System.out.println(getPairsWithKDifferenceOptimal(k, arr));
 */	
 		
@@ -146,7 +150,9 @@ public class Algorithms {
 */
 
 // Print All Permutations of a Given String
-//		generatePermutations("play");
+//		generatePermutations("tag");
+		
+
 
 	}
 }
