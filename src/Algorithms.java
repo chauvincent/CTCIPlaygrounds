@@ -167,45 +167,30 @@ public class Algorithms {
 				spacesCount++;
 		}
 		int newSize = n + (spacesCount * 3) + 1;
-		System.out.println("New Size: " + newSize);
-		
-		char []outputArr = new char[newSize];
 		int spacesProcessed = 0;
-		int index = 0, index2 = 0;
-		System.out.println("Spaces Counted: " + spacesCount);
-		
+		int index = 0, index2 = 0;		
+		char []outputArr = new char[newSize];
+
 		while(spacesProcessed != spacesCount){
 			while(inputString[index] != ' '){
 				outputArr[index2] = inputString[index];
-				index2++;
-				index++;
+				index2++; index++;
 			}
 			outputArr[index2+1] = '%';
-
 			outputArr[index2+2] = '2';
-
 			outputArr[index2+3] = '0';
-			index2 += 4;
-			index++;
+			index2 += 4; index++;
 			System.out.println("index1: " + index);
-
 			System.out.println("index2: " + index2);
-			for(int i = 0; i < outputArr.length; i++)
-				System.out.print(outputArr[i]);
 			System.out.println("\n===end itr===");
-			
-			
 			spacesProcessed++;
 		}
 		while(index2 != newSize){
 			outputArr[index2] = inputString[index];
-			index++;
-			index2++;
+			index++; index2++;
 		}
-		
 		for(int i = 0; i < outputArr.length; i++)
 			System.out.print(outputArr[i]);
-
 	}
 	
 	public static void main(String[] args) {
@@ -238,9 +223,10 @@ public class Algorithms {
 	System.out.println(checkPermutation(s,s2));
 */
 //										1.3 URLify: write a method to replace all spaces with %20, given "true" length of string
+/*
 	String s = "Mr John Smith     ";
 	int sLength = 13;
 	URLify(s, sLength);
-		
+*/		
 	}
 }
