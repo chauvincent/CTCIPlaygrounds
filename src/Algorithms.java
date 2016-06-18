@@ -97,7 +97,6 @@ public class Algorithms {
 	//  example: find s:abbc occurences in cbabadcbababbc
 	static String findAllPermutationsInString(String s, String b){
 		int charBucket[] = new int[25];
-		//String answer = "";
 		StringBuilder answer = new StringBuilder();
 		s = s.toLowerCase(); b = b.toLowerCase();
 		for(char c : s.toCharArray()){
@@ -112,7 +111,7 @@ public class Algorithms {
 			for(int j = 0; j < windowSize; j++){
 				charBucket2[bArray[i+j] - 'a'] += 1;
 				temp += bArray[i+j];
-			} // Window Size == S
+			}
 			if(Arrays.equals(charBucket, charBucket2)){
 				answer.append( " " + temp + " ");
 			} else {
