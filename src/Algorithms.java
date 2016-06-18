@@ -8,7 +8,6 @@ public class Algorithms {
 			return;
 		int i = lo-1, j = hi;
 		int temp, pivot = a[hi];  
-
 		while(true){
 			// start from left to find first smaller than pivot on right
 			while(a[++i] < pivot);
@@ -135,10 +134,9 @@ public class Algorithms {
 		}
 	} // O(n!) Brute Force
 	
-	// 1.1 isUnique, cannot use addition DS
+	// 1.1 isUnique, cannot use addition DS ~ O(N) if length < 128, else pigeon hole effect O(1)
 	static Boolean isUnique(String s){
 		if(s.length() > 128) return false;
-		
 		int []characterBucket = new int[128];
 		for(char c : s.toCharArray()){
 			if(characterBucket[c] != 0){
@@ -149,30 +147,46 @@ public class Algorithms {
 		}
 		return true;
 	}
-	
+	static Boolean checkPermutation(String s, String s2){
+		if(s.length() != s2.length()) return false;
+		int []letterBucket1 = new int[128], letterBucket2 = new int[128];
+		char[] stringArr = s.toCharArray(), stringArr2 = s2.toCharArray();
+		for(int i = 0; i < s.length(); i++){
+			letterBucket1[stringArr[i]]++;
+			letterBucket2[stringArr2[i]]++;
+		}
+		if (Arrays.equals(letterBucket1, letterBucket2)) return true;
+		return false;
+	} // O(S)
 	
 	public static void main(String[] args) {
-//	K-Difference of array
+//													K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
 		int k = 2;
 //		System.out.println(getPairsWithKDifference(k, arr));
 		System.out.println(getPairsWithKDifferenceOptimal(k, arr));
 */	
-		
-//	String Permutation (should have 7 permutations of s inside b)
+//										String Permutation (should have 7 permutations of s inside b)
 /*		String s = "abbc";
 		String b = "cbabadcbbabbcbabaabccbabc";
 		System.out.println(findAllPermutationsInString(s, b));
 */
 
-// Print All Permutations of a Given String
+// 											Print All Permutations of a Given String
 //		generatePermutations("tag");
 		
-//						CTCI Chapter 1 Problems :)
-/*
+//												CTCI Chapter 1 Problems :)
+// 										1.1 isUnique no additional Data Structures
+/* 
 	String s = "in my mind in my head, this is where we all came from...";
 	String s2 = "abcdefg";
 	System.out.println(isUnique(s2));
 */
+// 										1.2 checkPermutation: Given two strings find out if they are permutation of each other
+/*	String s = "ta.g";
+	String s2 = "a24..";
+	System.out.println(checkPermutation(s,s2));
+*/
+
 	}
 }
