@@ -147,6 +147,7 @@ public class Algorithms {
 		}
 		return true;
 	}
+	// 1.2
 	static Boolean checkPermutation(String s, String s2){
 		if(s.length() != s2.length()) return false;
 		int []letterBucket1 = new int[128], letterBucket2 = new int[128];
@@ -158,7 +159,7 @@ public class Algorithms {
 		if (Arrays.equals(letterBucket1, letterBucket2)) return true;
 		return false;
 	} // O(S)
-	
+	//1.3
 	static void URLify(String s, int n){
 		char []inputString = s.toCharArray();
 		int spacesCount = 0;
@@ -180,9 +181,6 @@ public class Algorithms {
 			outputArr[index2+2] = '2';
 			outputArr[index2+3] = '0';
 			index2 += 4; index++;
-			System.out.println("index1: " + index);
-			System.out.println("index2: " + index2);
-			System.out.println("\n===end itr===");
 			spacesProcessed++;
 		}
 		while(index2 != newSize){
@@ -192,8 +190,12 @@ public class Algorithms {
 		for(int i = 0; i < outputArr.length; i++)
 			System.out.print(outputArr[i]);
 	}
-	
+	// 1.4
+	static Boolean permutationPalindrome(String s){
+		return false;
+	}
 	public static void main(String[] args) {
+		
 //													K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
 		int k = 2;
@@ -228,5 +230,11 @@ public class Algorithms {
 	int sLength = 13;
 	URLify(s, sLength);
 */		
+
+//										1.4 Palindrome Permutation: Given a string check if it is a permutation of a palindrome
+//	Example: Input: Tact Coa , tactcoapapa   Output: True since "taco cat", "atco cta"    ~~~ tacOcat  atcOcta
+	String s = "tactcoapapa";
+	System.out.println(permutationPalindrome(s)); // should return true
+	
 	}
 }
