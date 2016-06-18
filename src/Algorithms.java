@@ -159,6 +159,30 @@ public class Algorithms {
 		return false;
 	} // O(S)
 	
+	static void URLify(String s, int n){
+		char []inputString = s.toCharArray();
+		int spacesCount = 0;
+		for(int i = 0; i < n; i++){
+			if(inputString[i] == ' ')
+				spacesCount++;
+		}
+		char []outputArr = new char[n + (spacesCount * 3) + 1];
+		for(int j = 0; j < n; j++){
+			if(inputString[j]!=' '){
+				outputArr[j] = inputString[j];
+			}else{
+				outputArr[j] = '%';
+				j = j + 1;
+				outputArr[j] = '2';
+				j = j + 2;
+				outputArr[j] = '0';
+			}
+		}
+		for(char c : outputArr){
+			System.out.print(c);
+		}
+	}
+	
 	public static void main(String[] args) {
 //													K-Difference of array
 /*		int[] arr = {1, 7, 5, 9, 2, 12, 3};
@@ -176,6 +200,7 @@ public class Algorithms {
 //		generatePermutations("tag");
 		
 //												CTCI Chapter 1 Problems :)
+//
 // 										1.1 isUnique no additional Data Structures
 /* 
 	String s = "in my mind in my head, this is where we all came from...";
@@ -187,6 +212,10 @@ public class Algorithms {
 	String s2 = "a24..";
 	System.out.println(checkPermutation(s,s2));
 */
-
+//										1.3 URLify: write a method to replace all spaces with %20, given "true" length of string
+	String s = "Mr John Smith     ";
+	int sLength = 13;
+	URLify(s, sLength);
+		
 	}
 }
