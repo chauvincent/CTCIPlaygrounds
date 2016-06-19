@@ -204,10 +204,36 @@ public class Algorithms {
 		return flag;
 	}
 	// 1.5 
-	static Boolean isOneAway(String s1, String s2){
-		char[] strArr = s1.toCharArray();
+	static Boolean checkSameLength(String s1, String s2){
+		int difference = 0;
+		char[] strArr1 = s1.toCharArray();
 		char[] strArr2 = s2.toCharArray();
-		
+		for(int i = 0; i < strArr1.length; i++){
+			if (strArr1[i] != strArr2[i]){
+				difference++;
+			}
+		}
+		if (difference == 1) return true;
+		return false;
+	}
+	static Boolean isOneAway(String s1, String s2){
+		String sameLength = "";
+		System.out.println("S1 len: " + s1.length() + " s2 len: " + s2.length());
+		if(s1.length() + 1 == s2.length()){
+			sameLength = s1 + "X";
+			//System.out.println("got here 1");
+			return checkSameLength(sameLength,s2);
+		}
+		if (s1.length() == s2.length() + 1){
+			sameLength = s2 + "X";
+			//System.out.println("got here 2");
+			return checkSameLength(sameLength,s1);
+		}
+		if (s1.length() == s2.length()){
+			//System.out.println("got here 3");
+			return checkSameLength(s1,s2);
+		}
+		//System.out.println("got here");
 		return false;
 	}
 	
@@ -261,7 +287,7 @@ public class Algorithms {
 	String s3 = "waterbottles";
 	String s4 = "waterbottlq";
 	
-	System.out.println(isOneAway(s1,s2));
+	System.out.println(isOneAway(s3,s4));
 	
 	}
 }
