@@ -192,8 +192,25 @@ public class Algorithms {
 	}
 	// 1.4
 	static Boolean permutationPalindrome(String s){
+		s= s.toLowerCase();
+		int letterBucket[] = new int[25];
+		for(char c : s.toCharArray()){
+			letterBucket[c - 'a']++;
+		}
+		Boolean flag = false;
+		for(int i : letterBucket){
+			System.out.println(i);
+		}
+		return flag;
+	}
+	// 1.5 
+	static Boolean isOneAway(String s1, String s2){
+		char[] strArr = s1.toCharArray();
+		char[] strArr2 = s2.toCharArray();
+		
 		return false;
 	}
+	
 	public static void main(String[] args) {
 		
 //													K-Difference of array
@@ -233,8 +250,18 @@ public class Algorithms {
 
 //										1.4 Palindrome Permutation: Given a string check if it is a permutation of a palindrome
 //	Example: Input: Tact Coa , tactcoapapa   Output: True since "taco cat", "atco cta"    ~~~ tacOcat  atcOcta
-	String s = "tactcoapapa";
-	System.out.println(permutationPalindrome(s)); // should return true
+/*
+		String s = "tactcoapapa";
+		System.out.println(permutationPalindrome(s)); // should return true
+*/	
+//										1.5 One Away: There are three types of edits that can be performed on strings; 
+//										insert a characater, remove. replace. Given two strings, write a function to check if they are one edit away;
+	String s1 = "waterbottle";
+	String s2 = "waterbottl";
+	String s3 = "waterbottles";
+	String s4 = "waterbottlq";
+	
+	System.out.println(isOneAway(s1,s2));
 	
 	}
 }
