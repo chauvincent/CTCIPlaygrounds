@@ -218,23 +218,17 @@ public class Algorithms {
 	}
 	static Boolean isOneAway(String s1, String s2){
 		String sameLength = "";
-		System.out.println("S1 len: " + s1.length() + " s2 len: " + s2.length());
-		if(s1.length() + 1 == s2.length()){
-			sameLength = s1 + "X";
-			//System.out.println("got here 1");
-			return checkSameLength(sameLength,s2);
-		}
-		if (s1.length() == s2.length() + 1){
-			sameLength = s2 + "X";
-			//System.out.println("got here 2");
-			return checkSameLength(sameLength,s1);
-		}
+		String sameLength2 = "";
+		
 		if (s1.length() == s2.length()){
-			//System.out.println("got here 3");
 			return checkSameLength(s1,s2);
 		}
-		//System.out.println("got here");
-		return false;
+		if (s1.length() + 1 != s2.length() || s2.length() + 1 != s1.length()) return false;
+		
+		Boolean insertReplace = (s1.length() + 1 == s2.length()); 
+		sameLength = insertReplace ? s1 + 'X' : s2 + 'X';
+		sameLength2 = insertReplace ? s2 : s1;
+		return checkSameLength(sameLength, sameLength2);
 	}
 	
 	public static void main(String[] args) {
@@ -282,12 +276,14 @@ public class Algorithms {
 */	
 //										1.5 One Away: There are three types of edits that can be performed on strings; 
 //										insert a characater, remove. replace. Given two strings, write a function to check if they are one edit away;
+
 	String s1 = "waterbottle";
 	String s2 = "waterbottl";
 	String s3 = "waterbottles";
 	String s4 = "waterbottlq";
 	
-	System.out.println(isOneAway(s3,s4));
-	
+	System.out.println(isOneAway(s3,s2));
+
+		
 	}
 }
