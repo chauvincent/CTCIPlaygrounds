@@ -255,6 +255,29 @@ public class Algorithms {
 		}
 		return compressed.toString();
 	}
+	
+	static int[][] rotateMatrix(int[][] M){
+		if (M.length != M[0].length) 
+			return M;
+		int N = M.length;
+		for (int pivot = 0; pivot < N / 2; pivot++) {
+			int low = pivot;
+			int high = N - pivot - 1;
+			for(int i = low; i < high; i++) {
+				int c = i - low;
+				// below diagonal
+				M[low][i] = M[high-c][low];   			
+				M[high-c][low] = M[high][high-c]; 
+				// above diagonal
+				M[high][high-c] = M[i][high]; 
+				M[i][high] = M[low][i];
+			}
+		}
+		return M;
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		
 //													K-Difference of array
@@ -309,13 +332,34 @@ public class Algorithms {
 */
 //										1.6 String Compression: implement a method to compres a string with repeated characters
 //	Example: aabcccccaaa -> a2b1c5a3   but return original string if compressed version is longer. assume lowercase a-z)
-		
+/*
 		String s = "aabcccccaaa";
 		System.out.println(compressString(s));
+*/
+//										1.7 Rotate Matrix: NxN matrix, each pixel is 4 bytes, rotate by 90 degrees.
+		int N = 3;
+		int counter = 9;
+		int [][]M = new int[N][N];
+		for(int i = 0; i < M.length; i++)
+			for(int j = 0; j < M.length; j++)
+				M[i][j] = ++counter + 10;
+		
 
+		for(int i = 0; i < M.length; i++){
+			for(int j = 0; j < M.length; j++){
+				System.out.print(M[i][j] + " ");
+			}
+		System.out.println("");
+		}
+
+		int [][]M2 = rotateMatrix(M);
 		
-		
-		
-		
+		for(int i = 0; i < M.length; i++){
+			for(int j = 0; j < M.length; j++){
+				System.out.print(M2[i][j] + " ");
+			}
+		System.out.println("");
+		}
+
 	}
 }
