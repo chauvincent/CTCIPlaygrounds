@@ -219,18 +219,42 @@ public class Algorithms {
 	static Boolean isOneAway(String s1, String s2){
 		String sameLength = "";
 		String sameLength2 = "";
-		
-		if (s1.length() == s2.length()){
+		if (s1.length() + 1 != s2.length() || s2.length() + 1 != s1.length()) 
+			return false;
+		if (s1.length() == s2.length()) 
 			return checkSameLength(s1,s2);
-		}
-		if (s1.length() + 1 != s2.length() || s2.length() + 1 != s1.length()) return false;
-		
+	
 		Boolean insertReplace = (s1.length() + 1 == s2.length()); 
 		sameLength = insertReplace ? s1 + 'X' : s2 + 'X';
 		sameLength2 = insertReplace ? s2 : s1;
 		return checkSameLength(sameLength, sameLength2);
 	}
-	
+	//	1.6
+	static String compressString(String s){
+		char[] stringArr = s.toCharArray();
+		StringBuilder compressed = new StringBuilder();
+		int index = 0, index2 = 1;
+		int count = 1;
+		int offset = 0;
+		Boolean done = false;
+		while(!done){
+			if(stringArr[index] == stringArr[index2]){
+				count++; offset++;
+			}else{
+				compressed.append(stringArr[index]);
+				compressed.append(count);
+				count = 1;
+			}
+			index++; index2++;
+			if(index2 == s.length()){
+				compressed.append(stringArr[offset]);
+				int lenOfLast = s.length() - offset;
+				compressed.append(lenOfLast);
+				return compressed.toString();
+			}
+		}
+		return compressed.toString();
+	}
 	public static void main(String[] args) {
 		
 //													K-Difference of array
@@ -275,15 +299,23 @@ public class Algorithms {
 		System.out.println(permutationPalindrome(s)); // should return true
 */	
 //										1.5 One Away: There are three types of edits that can be performed on strings; 
-//										insert a characater, remove. replace. Given two strings, write a function to check if they are one edit away;
-
+//	Insert a characater, remove. replace. Given two strings, write a function to check if they are one edit away;
+/*
 	String s1 = "waterbottle";
 	String s2 = "waterbottl";
 	String s3 = "waterbottles";
 	String s4 = "waterbottlq";
-	
 	System.out.println(isOneAway(s3,s2));
+*/
+//										1.6 String Compression: implement a method to compres a string with repeated characters
+//	Example: aabcccccaaa -> a2b1c5a3   but return original string if compressed version is longer. assume lowercase a-z)
+		
+		String s = "aabcccccaaa";
+		System.out.println(compressString(s));
 
+		
+		
+		
 		
 	}
 }
