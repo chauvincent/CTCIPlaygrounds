@@ -275,8 +275,24 @@ public class Algorithms {
 		}
 		return M;
 	}
-	void zeroMatrix(int[][] M){
+	static void zeroMatrix(int[][] M){
+		/*  1 2 0    0 0 0
+		 *  2 0 1 -> 0 0 0
+		 *  0 3 5    0 0 0
+		 */
+		Boolean colHasZero = false;
+		Boolean rowHasZero = false;
+		for(int i = 0; i < M.length; i++){
+			for(int j = 0; j < M[0].length; j++){
+				if(M[i][j] == 0){
+					colHasZero = true;
+					rowHasZero = true;
+					break;
+				}else{
+				}
+			}
 		
+		}
 	}
 	
 	
@@ -362,7 +378,17 @@ public class Algorithms {
 	
 */	
 //										1.8 Zero Matrix: Write an algorithm st if an element in a MxN matrix is 0, its entire row and column are set to 0
-		int[][]M = new int[5][2];
+		int[][]M = new int[5][3];
+		for(int i = 0; i < 5; i++){
+			for(int j = 0; j < 3; j++){
+				if(i % 2 == 0 && j%3 == 1){
+					M[i][j] = 0;
+				}else{
+					M[i][j] = i + j;
+				}
+					
+			}
+		}
 		zeroMatrix(M);
 	}
 }
