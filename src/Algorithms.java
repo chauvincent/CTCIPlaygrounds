@@ -275,7 +275,9 @@ public class Algorithms {
 		}
 		return M;
 	}
-	
+	void zeroMatrix(int[][] M){
+		
+	}
 	
 	
 	public static void main(String[] args) {
@@ -337,29 +339,30 @@ public class Algorithms {
 		System.out.println(compressString(s));
 */
 //										1.7 Rotate Matrix: NxN matrix, each pixel is 4 bytes, rotate by 90 degrees.
+/*
 		int N = 3;
 		int counter = 9;
 		int [][]M = new int[N][N];
 		for(int i = 0; i < M.length; i++)
 			for(int j = 0; j < M.length; j++)
 				M[i][j] = ++counter + 10;
-		
-
 		for(int i = 0; i < M.length; i++){
 			for(int j = 0; j < M.length; j++){
 				System.out.print(M[i][j] + " ");
 			}
 		System.out.println("");
 		}
-
 		int [][]M2 = rotateMatrix(M);
-		
 		for(int i = 0; i < M.length; i++){
 			for(int j = 0; j < M.length; j++){
 				System.out.print(M2[i][j] + " ");
 			}
 		System.out.println("");
 		}
-
+	
+*/	
+//										1.8 Zero Matrix: Write an algorithm st if an element in a MxN matrix is 0, its entire row and column are set to 0
+		int[][]M = new int[5][2];
+		zeroMatrix(M);
 	}
 }
