@@ -398,18 +398,18 @@ public class Algorithms {
 	
 */	
 //										1.8 Zero Matrix: Write an algorithm st if an element in a MxN matrix is 0, its entire row and column are set to 0
-		int[][]M = new int[5][3];
-		for(int i = 0; i < 5; i++){
-			for(int j = 0; j < 3; j++){
-				if(i % 2 == 0 && j%3 == 1){
-					M[i][j] = 0;
-				}else{
-					M[i][j] = i + j;
-				}
-					
-			}
-		}
-		zeroMatrix(M);
+//		int[][]M = new int[5][3];
+//		for(int i = 0; i < 5; i++){
+//			for(int j = 0; j < 3; j++){
+//				if(i % 2 == 0 && j%3 == 1){
+//					M[i][j] = 0;
+//				}else{
+//					M[i][j] = i + j;
+//				}
+//					
+//			}
+//		}
+//		zeroMatrix(M);
 
 		
 	}
