@@ -1,4 +1,3 @@
-
 public class LinkedList {
 	private Node head;
 	private int count;
@@ -26,7 +25,7 @@ public class LinkedList {
 		current.setNext(temp);
 		count++;
 	}
-	public boolean remove(int index){
+	public boolean removeDataAt(int index){
 		if(index < 1 || index > size()){
 			return false;
 		}
@@ -40,10 +39,31 @@ public class LinkedList {
 		count--;
 		return true;
 	}
+	public boolean removeDataWithValue(Integer d){
+		Node temp = head;
+		if(temp.data == d){
+			head = temp.getNext();
+			return true;
+		}
+		while(temp.getNext() != null){
+			if(temp.next.data == d){
+				temp.next = temp.next.next;
+				return true;
+			}
+			temp = temp.next;
+		}
+		
+	}
 	public int size(){
 		return count;
 	}
-
+	public void print(){
+		Node temp = head.next;
+		while(temp != null){
+			System.out.print(temp.data + " ");
+			temp = temp.next;
+		}
+	}
 	private class Node{
 		Node next;
 		Integer data;
@@ -65,7 +85,13 @@ public class LinkedList {
 		}
 	}
 	public static void main(String[] args) {
-
+		LinkedList numbers = new LinkedList();
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+		numbers.add(40);
+		numbers.add(50);
+		numbers.print();
 		
 	}
 	
