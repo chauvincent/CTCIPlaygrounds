@@ -6,7 +6,7 @@ public class LinkedList {
 		head = new Node(null);
 		count = 0;
 	}
-	public void add(Integer data){
+	public void addValue(Integer data){
 		Node temp = new Node(data);
 		Node current = head;
 		while(current.getNext() != null){
@@ -15,7 +15,7 @@ public class LinkedList {
 		current.setNext(temp);
 		count++;
 	}
-	public void add(Integer data, int index){
+	public void addValueAtIndex(Integer data, int index){
 		Node temp = new Node(data);
 		Node current = head;
 		for(int i = 1; i < index && current.getNext() != null; i++){
@@ -52,7 +52,7 @@ public class LinkedList {
 			}
 			temp = temp.next;
 		}
-		
+		return false;
 	}
 	public int size(){
 		return count;
@@ -65,8 +65,8 @@ public class LinkedList {
 		}
 	}
 	private class Node{
-		Node next;
-		Integer data;
+		private Node next;
+		private Integer data;
 		public Node(Integer data){
 			next = null;
 			this.data = data;
@@ -85,13 +85,16 @@ public class LinkedList {
 		}
 	}
 	public static void main(String[] args) {
-		LinkedList numbers = new LinkedList();
-		numbers.add(10);
-		numbers.add(20);
-		numbers.add(30);
-		numbers.add(40);
-		numbers.add(50);
-		numbers.print();
+		LinkedList numberList = new LinkedList();
+		numberList.addValue(10);
+		numberList.addValueAtIndex(20, 1);
+		numberList.addValue(30);
+		numberList.addValue(40);
+		numberList.removeDataAt(1);
+		numberList.removeDataWithValue(40);
+		numberList.print();
+		
+		
 		
 	}
 	
