@@ -280,18 +280,38 @@ public class Algorithms {
 		 *  2 0 1 -> 0 0 0
 		 *  0 3 5    0 0 0
 		 */
-		Boolean colHasZero = false;
-		Boolean rowHasZero = false;
-		for(int i = 0; i < M.length; i++){
-			for(int j = 0; j < M[0].length; j++){
+
+		boolean[] rowHasZero = new boolean[M.length];
+		boolean[] colHasZero = new boolean[M[0].length];
+		
+		for (int i = 0; i < M.length; i++){
+			for(int j = 0; j < M[0].length;j++){
 				if(M[i][j] == 0){
-					colHasZero = true;
-					rowHasZero = true;
-					break;
-				}else{
+					rowHasZero[i] = true;
+					colHasZero[j] = true;
 				}
 			}
+		}
 		
+		for(int i = 0; i < rowHasZero.length; i++){
+			if (rowHasZero[i]){
+				for(int j = 0; j < M[0].length; j++){
+					M[i][j] = 0;
+				}
+			}
+		}
+		for(int j = 0; j < colHasZero.length; j++){
+			if(colHasZero[j])
+				for(int k = 0; k < M.length; k++){
+					M[k][j] = 0;
+				}
+		}
+		
+		for(int i = 0; i < rowHasZero.length; i++){
+			for(int j = 0; j < colHasZero.length; j++){
+				System.out.print(M[i][j] + " ");
+			}
+			System.out.println("");
 		}
 	}
 	
@@ -390,5 +410,7 @@ public class Algorithms {
 			}
 		}
 		zeroMatrix(M);
+
+		
 	}
 }
