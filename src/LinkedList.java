@@ -64,6 +64,25 @@ public class LinkedList {
 			temp = temp.next;
 		}
 	}
+	public void removeDuplicate(){
+		Node first = head.next; 
+		Node runner = first;
+		
+		while(runner != null && first != null){
+			runner = first;
+			while(runner.next!=null){
+				if(runner.next.data == first.data ){
+					Node duplicate = runner.next;
+					runner.next = runner.next.next;
+				}else{
+					runner = runner.next;
+				}
+			}
+			first = first.next;
+		}
+		
+		
+	}
 	private class Node{
 		private Node next;
 		private Integer data;
@@ -87,16 +106,19 @@ public class LinkedList {
 	public static void main(String[] args) {
 		LinkedList numberList = new LinkedList();
 		numberList.addValue(10);
-		numberList.addValueAtIndex(20, 1);
+		numberList.addValue(20);
 		numberList.addValue(30);
 		numberList.addValue(40);
-		numberList.removeDataAt(1);
-		numberList.removeDataWithValue(40);
+		numberList.addValue(50);
+		numberList.addValue(60);
+		numberList.addValue(70);
+		numberList.addValue(60);
+		numberList.addValue(60);
+		numberList.print();	
+		numberList.removeDuplicate();
+		System.out.println("REMOVE DUP CALLED");
 		numberList.print();
 		
-		
-		
-	}
-	
+	}	
 }
 
