@@ -64,10 +64,10 @@ public class LinkedList {
 			temp = temp.next;
 		}
 	}
+// 2.1 Remove Duplicates from linked list
 	public void removeDuplicate(){
 		Node first = head.next; 
 		Node runner = first;
-		
 		while(runner != null && first != null){
 			runner = first;
 			while(runner.next!=null){
@@ -80,9 +80,42 @@ public class LinkedList {
 			}
 			first = first.next;
 		}
-		
-		
 	}
+// 2.2 Find the Kth to last element in a linked list
+	public int kthToLastRecursive(Node curNode, int index){
+		// Note knowing the count of an linkedlist we can just (count - index)
+			// In Theory:
+			//  10 20 30 40 50 60 70
+			//  ->  -> -> -> -> -> 0
+			//               <- <- <- // 1+1+1 k is 4, so 50
+		int count = 0;
+		
+		if (curNode == null){  //base case to get length of linked list, returns 0 at the end of list
+			return 0;
+		}
+		int i = kthToLastRecursive(curNode.next, index) + 1; // recurse the last node (0), and on return keep track of i until == index
+		if(i == index){
+			System.out.println("");
+			System.out.println(index + "th to last node is " + curNode.data);
+		}
+		return i;
+	}
+	public int kthToLastIterative(Node head, int k){
+		// In Theory:
+		//  10 20 30 40 50 60 70
+		//  -> ->  -> -> -> -> ->  recurse to last, then backtrack the ptr with a counter
+ 		//               <- <- <-  k = 3
+		
+		Node runner;
+		
+		
+		
+		
+		return 0;
+	}
+	
+	
+// Node Class Declaration
 	private class Node{
 		private Node next;
 		private Integer data;
@@ -118,6 +151,7 @@ public class LinkedList {
 		numberList.removeDuplicate();
 		System.out.println("REMOVE DUP CALLED");
 		numberList.print();
+		numberList.kthToLastRecursive(numberList.head, 3);
 		
 	}	
 }
