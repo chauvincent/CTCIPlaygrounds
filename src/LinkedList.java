@@ -100,7 +100,7 @@ public class LinkedList {
 		}
 		return i;
 	}
-	public int kthToLastIterative(Node head, int k){
+	public Node kthToLastIterative(Node head, int k){
 		// In Theory:  Sliding window approach
 		//  10 20 30 40 50 60 70
 		//  /\    /\
@@ -117,11 +117,20 @@ public class LinkedList {
 			runner = runner.next;
 			head = head.next;
 		}
-		System.out.print(head.data);
-		return head.data;
+		//System.out.print(head.data);
+		return head;
 	}
-	
-	
+// 2.3 Delete middle node, when given access only to that node 
+// Example: Input: Node c,     a->b->c->d->e
+//			Output: no return but a->b->d->e
+// Not allowed access to head node
+	public void deleteMiddleNode(Node middleNode){
+		// In Theory:  10 20 30 40 50 60 70
+		//             10 20 30 50 60 70
+		middleNode.data = middleNode.next.data;    // Middle Node C  = D's Data
+		middleNode.next = middleNode.next.next;   //  Middle Node C -> E
+		
+	}
 // Node Class Declaration
 	private class Node{
 		private Node next;
@@ -159,7 +168,12 @@ public class LinkedList {
 		System.out.println("REMOVE DUP CALLED");
 		numberList.print();
 		numberList.kthToLastRecursive(numberList.head, 3);
-		numberList.kthToLastIterative(numberList.head, 3);
+		Node middleNode = numberList.kthToLastIterative(numberList.head, 4);
+		numberList.print();
+		System.out.println("\nRemove middle node");
+		numberList.deleteMiddleNode(middleNode);
+		numberList.print();
+		
 		
 	}	
 }
