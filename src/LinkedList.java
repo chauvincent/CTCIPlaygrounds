@@ -101,17 +101,24 @@ public class LinkedList {
 		return i;
 	}
 	public int kthToLastIterative(Node head, int k){
-		// In Theory:
+		// In Theory:  Sliding window approach
 		//  10 20 30 40 50 60 70
-		//  -> ->  -> -> -> -> ->  recurse to last, then backtrack the ptr with a counter
- 		//               <- <- <-  k = 3
+		//  /\    /\
+		//     /\    /\
+	    //        /\    /\
+	    //           /\    /\
+	    //               /\   /\
+		Node runner = head.next;
+		head = head.next;
+		for(int i = 0; i < k; i++)
+			runner = runner.next;
 		
-		Node runner;
-		
-		
-		
-		
-		return 0;
+		while(runner != null){
+			runner = runner.next;
+			head = head.next;
+		}
+		System.out.print(head.data);
+		return head.data;
 	}
 	
 	
@@ -152,6 +159,7 @@ public class LinkedList {
 		System.out.println("REMOVE DUP CALLED");
 		numberList.print();
 		numberList.kthToLastRecursive(numberList.head, 3);
+		numberList.kthToLastIterative(numberList.head, 3);
 		
 	}	
 }
