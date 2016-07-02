@@ -121,9 +121,10 @@ public class LinkedList {
 		return head;
 	}
 // 2.3 Delete middle node, when given access only to that node 
-// Example: Input: Node c,     a->b->c->d->e
-//			Output: no return but a->b->d->e
-// Not allowed access to head node
+/* Example: Input: Node c,     a->b->c->d->e
+			Output: no return but a->b->d->e
+ 	Not allowed access to head node
+*/
 	public void deleteMiddleNode(Node middleNode){
 		// In Theory:  10 20 30 40 50 60 70
 		//             10 20 30 50 60 70
@@ -131,6 +132,44 @@ public class LinkedList {
 		middleNode.next = middleNode.next.next;   //  Middle Node C -> E
 		
 	}
+// 2.4 Partition: Write code to partition a linkedlist around a value X such that all nodes less than x comes before all nodes greater than or equal to x. 
+//	If X is contained within the list, the values of x only need to be after the elements less than x
+//  Input:   3->5->8->5->10->2->1  [partition = 5]
+//  Output:  3->1->2->10->5->5->8
+/*	In Theory:
+ * 			3 5 8 5 10 2 1
+ *		    /\                 Left List:
+ *			  /\			   Right List:
+*/
+	public void partitionFirstAttempt(int value){
+		Node headPtr = head.next;
+		LinkedList leftList = new LinkedList();
+		LinkedList rightList = new LinkedList();
+		Node leftEnd = leftList.head;
+		while(headPtr != null){
+			if(headPtr.data < value){
+				leftList.addValue( headPtr.data);
+				leftEnd = leftEnd.next;
+			}else{
+				rightList.addValue( headPtr.data);
+			}
+			headPtr = headPtr.next;
+		}
+		
+		// Create Merged List
+		// get leftEnd ptr, set its node.next equal to head of rightlist 
+		System.out.println("\nMERGED:");
+		leftEnd.next = rightList.head.next;
+		leftList.print();
+		
+//		System.out.println("\nPARTITION");
+//		leftList.print();
+//		System.out.println("\nLeft Right");
+//		rightList.print();
+		
+	}
+
+
 // Node Class Declaration
 	private class Node{
 		private Node next;
@@ -155,24 +194,26 @@ public class LinkedList {
 	public static void main(String[] args) {
 		LinkedList numberList = new LinkedList();
 		numberList.addValue(10);
-		numberList.addValue(20);
+		numberList.addValue(60);
 		numberList.addValue(30);
 		numberList.addValue(40);
 		numberList.addValue(50);
 		numberList.addValue(60);
-		numberList.addValue(70);
+		numberList.addValue(10);
 		numberList.addValue(60);
 		numberList.addValue(60);
 		numberList.print();	
-		numberList.removeDuplicate();
-		System.out.println("REMOVE DUP CALLED");
-		numberList.print();
-		numberList.kthToLastRecursive(numberList.head, 3);
-		Node middleNode = numberList.kthToLastIterative(numberList.head, 4);
-		numberList.print();
-		System.out.println("\nRemove middle node");
-		numberList.deleteMiddleNode(middleNode);
-		numberList.print();
+//		numberList.removeDuplicate();
+//		System.out.println("REMOVE DUP CALLED");
+//		numberList.print();
+//		numberList.kthToLastRecursive(numberList.head, 3);
+//		Node middleNode = numberList.kthToLastIterative(numberList.head, 4);
+//		numberList.print();
+//		System.out.println("\nRemove middle node");
+//		numberList.deleteMiddleNode(middleNode);
+//		numberList.print();
+		numberList.partitionFirstAttempt(50);
+		
 		
 		
 	}	
