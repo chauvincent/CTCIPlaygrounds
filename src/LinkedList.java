@@ -155,19 +155,70 @@ public class LinkedList {
 			}
 			headPtr = headPtr.next;
 		}
-		
-		// Create Merged List
-		// get leftEnd ptr, set its node.next equal to head of rightlist 
 		System.out.println("\nMERGED:");
 		leftEnd.next = rightList.head.next;
 		leftList.print();
+	}
+// 2.4 Partition Optimized
+/*	In Theory:
+ * 	Have a head and tail pointer
+ *  Insert at head or tail depending on value
+ *  reset the new head and tail then traverse
+ */     
+	public void partitionOptimized(int value){
+				
+	}
+//	2.5 Sum Lists
+/*  You have two numbers represented by a linked list. Each node contains a single digit
+ *  Digit are stored in reverse order, 1's digit is at the head. Write a function that adds the two numbers
+ *  and returns the sum as a linked list
+ *  Example:
+ *  Input: (7->1->6) (5->9->2)  that is 617 + 295
+ *  Output: (2->1->9) which is 912
+ *   7 1 6
+ * + 5 9 2
+ * --------
+ *   2
+ *   7 + 5 = 12, carry 1
+ *   2 1
+ *   1 + 9 = 10 carry 1
+ *   2 1 9
+ */
+	// if we know count
+	public LinkedList sumList(Node L1, Node L2, int carry){
+//		int count = 0;
+//		
+//		if (curNode == null){  //base case to get length of linked list, returns 0 at the end of list
+//			return 0;
+//		}
+//		int i = kthToLastRecursive(curNode.next, index) + 1; // recurse the last node (0), and on return keep track of i until == index
+//		if(i == index){
+//			System.out.println("");
+//			System.out.println(index + "th to last node is " + curNode.data);
+//		}
+//		return i;
+	
+		int sum = 0;
+		LinkedList sumList = new LinkedList();
+		if(L1 == null || L2 == null){
+			return sumList;
+		}
+		sum = L1.data + L2.data;
+		if(sum >= 10){
+			carry = (sum % 10) > 0 ? 1 : 0;
+		}else{
+			return sum;
+		}
+	
+	}
+	public LinkedList merge(LinkedList L1, LinkedList L2){
 		
-//		System.out.println("\nPARTITION");
-//		leftList.print();
-//		System.out.println("\nLeft Right");
-//		rightList.print();
 		
 	}
+// 2.6 Palindrome: check if a linked list is a palindrome
+/*
+ * 
+ */
 
 
 // Node Class Declaration
