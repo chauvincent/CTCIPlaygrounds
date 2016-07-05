@@ -185,35 +185,36 @@ public class LinkedList {
  *   2 1 9
  */
 	// if we know count
-	public LinkedList sumList(Node L1, Node L2, int carry){
-//		int count = 0;
-//		
-//		if (curNode == null){  //base case to get length of linked list, returns 0 at the end of list
-//			return 0;
-//		}
-//		int i = kthToLastRecursive(curNode.next, index) + 1; // recurse the last node (0), and on return keep track of i until == index
-//		if(i == index){
-//			System.out.println("");
-//			System.out.println(index + "th to last node is " + curNode.data);
-//		}
-//		return i;
-	
-		int sum = 0;
-		LinkedList sumList = new LinkedList();
-		if(L1 == null || L2 == null){
-			return sumList;
+	public Node sumList(Node L1, Node L2, int carry){
+		// base case
+		if(L1 == null && L2 == null && carry == 0){
+			return null;
 		}
-		sum = L1.data + L2.data;
-		if(sum >= 10){
-			carry = (sum % 10) > 0 ? 1 : 0;
-		}else{
-			return sum;
+		
+		int value = carry + L1.data + L2.data;		
+		Node sum = new Node(value % 10);
+		
+		// Recurse
+		if(L1 != null || L2 != null){
+			int carr = value >= 10 ? 1 : 0;
+			Node temp = sumList( L1.next, L2.next, carr);
+			sum.setNext(temp);
 		}
-	
+		return sum;
+		
 	}
-	public LinkedList merge(LinkedList L1, LinkedList L2){
-		
-		
+	public Node merge(Node L1, Node L2){
+		if (L1 == null)
+			return L1;
+		if (L2 == null)
+			return L2;
+		if(L1.data < L2.data){
+			L1.next = merge(L1.next, L2.next);
+			return L1;
+		}else{
+			L2.next = merge(L2.next, L1.next);
+			return L2;
+		}
 	}
 // 2.6 Palindrome: check if a linked list is a palindrome
 /*
@@ -253,7 +254,7 @@ public class LinkedList {
 		numberList.addValue(10);
 		numberList.addValue(60);
 		numberList.addValue(60);
-		numberList.print();	
+		//numberList.print();	
 //		numberList.removeDuplicate();
 //		System.out.println("REMOVE DUP CALLED");
 //		numberList.print();
@@ -263,9 +264,26 @@ public class LinkedList {
 //		System.out.println("\nRemove middle node");
 //		numberList.deleteMiddleNode(middleNode);
 //		numberList.print();
-		numberList.partitionFirstAttempt(50);
-		
-		
+//		numberList.partitionFirstAttempt(50);
+		LinkedList L1 = new LinkedList();
+		LinkedList L2 = new LinkedList();
+		L1.addValue(7);
+		L1.addValue(1);
+		L1.addValue(6);
+		L2.addValue(5);
+		L2.addValue(9);
+		L2.addValue(2);
+		int carry = 0;
+		Node head = numberList.sumList(L1.head.next, L2.head.next, carry);
+		while(head!=null){
+			System.out.print(" " + head.data);
+			head = head.next;
+		}
+
+		/*  7 1 6
+		 * + 5 9 2
+		 * --------
+		 */
 		
 	}	
 }
