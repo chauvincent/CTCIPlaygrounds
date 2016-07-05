@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LinkedList {
 	private Node head;
 	private int count;
@@ -184,7 +186,6 @@ public class LinkedList {
  *   1 + 9 = 10 carry 1
  *   2 1 9
  */
-	// if we know count
 	public Node sumList(Node L1, Node L2, int carry){
 		// base case
 		if(L1 == null && L2 == null && carry == 0){
@@ -201,7 +202,6 @@ public class LinkedList {
 			sum.setNext(temp);
 		}
 		return sum;
-		
 	}
 	public Node merge(Node L1, Node L2){
 		if (L1 == null)
@@ -217,11 +217,40 @@ public class LinkedList {
 		}
 	}
 // 2.6 Palindrome: check if a linked list is a palindrome
-/*
- * 
+/*  	Ex: 0 1 2 3 2 1 0
+ * 		
  */
-
-
+	public Boolean checkPalindromeFirstAttempt(Node head){
+		Node L1 = head;
+		Node L2 = L1;
+		Node rList = reverseList(L2);
+		Boolean foundDiff = false;
+		while(rList != null && L1 != null){
+			if(rList.data == L1.data){
+				
+			}else{
+				foundDiff = true;
+				break;
+			}
+			rList = rList.next;
+			L1 = L1.next;
+		}
+		
+		return !(foundDiff);
+	}
+	public Node reverseList(Node h){
+		Node nextNode = null;
+		Node currentNode = h.next;
+		Node previousNode = null;
+		while(currentNode != null){
+			nextNode = currentNode.next;
+			previousNode = currentNode; 
+			currentNode = nextNode;	
+		}
+		h.next = previousNode;
+		
+		return h;
+	}
 // Node Class Declaration
 	private class Node{
 		private Node next;
@@ -265,25 +294,34 @@ public class LinkedList {
 //		numberList.deleteMiddleNode(middleNode);
 //		numberList.print();
 //		numberList.partitionFirstAttempt(50);
-		LinkedList L1 = new LinkedList();
-		LinkedList L2 = new LinkedList();
-		L1.addValue(7);
-		L1.addValue(1);
-		L1.addValue(6);
-		L2.addValue(5);
-		L2.addValue(9);
-		L2.addValue(2);
-		int carry = 0;
-		Node head = numberList.sumList(L1.head.next, L2.head.next, carry);
-		while(head!=null){
-			System.out.print(" " + head.data);
-			head = head.next;
-		}
+//		LinkedList L1 = new LinkedList();
+//		LinkedList L2 = new LinkedList();
+//		L1.addValue(7);
+//		L1.addValue(1);
+//		L1.addValue(6);
+//		L2.addValue(5);
+//		L2.addValue(9);
+//		L2.addValue(2);
+//		int carry = 0;
+//		Node head = numberList.sumList(L1.head.next, L2.head.next, carry);
+//		while(head!=null){
+//			System.out.print(" " + head.data);
+//			head = head.next;
+//		}
 
-		/*  7 1 6
-		 * + 5 9 2
-		 * --------
-		 */
+		LinkedList newList = new LinkedList();
+		newList.addValue(0);
+		newList.addValue(1);
+		newList.addValue(2);
+		newList.addValue(3);
+		newList.addValue(2);
+		newList.addValue(1);
+		newList.addValue(0);
+		Boolean result = newList.checkPalindromeFirstAttempt(newList.head);
+		System.out.print(result);
+		
+		
+		
 		
 	}	
 }
