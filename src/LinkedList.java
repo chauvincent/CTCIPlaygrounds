@@ -229,16 +229,38 @@ public class LinkedList {
 			copied2 = copied2.next;
 		while(copied.data == null)
 			copied = copied.next;
-		
 		while(copied2 != null && copied != null){
 			if(copied2.data != copied.data)
 				return false;
 			copied = copied.next;
 			copied2 = copied2.next;
 		}
-	
-		
-		
+		return true;
+	}
+	public Boolean checkPalindromeStack(Node h){
+/* In Theory:
+ * 	10 20 30 40 50 60 70 80
+ *              /\            1x
+ *                       /\   2x
+ */
+		Stack<Integer> stack = new Stack<Integer>();
+		Node slowPtr = h;
+		Node fastPtr = h;
+		while(slowPtr != null && fastPtr != null){
+			stack.push(slowPtr.data);
+			slowPtr = slowPtr.next;
+			fastPtr = fastPtr.next.next;
+		}
+		// Adjust if odd
+		if(fastPtr != null){
+			slowPtr = slowPtr.next;
+		}
+		// Slow ptr now half way
+		while(slowPtr != null){
+			Integer stored = stack.pop();
+			if(stored != slowPtr.data)
+				return false;
+		}
 		return true;
 	}
 	public Node reverseListItr(Node h){
@@ -266,6 +288,7 @@ public class LinkedList {
 		second.next = h;
 		return rest;
 	}
+
 // Node Class Declaration
 	private class Node{
 		private Node next;
