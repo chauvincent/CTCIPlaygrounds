@@ -224,22 +224,22 @@ public class LinkedList {
 	public Boolean checkPalindromeFirstAttempt(Node h){
 		Node copied = new Node(h, h.data);
 		Node copied2 = new Node(copied, copied.data);
-		
+		copied2 = reverseListRecursive(copied2);
 		while(copied2.data == null)
 			copied2 = copied2.next;
 		while(copied.data == null)
 			copied = copied.next;
 		
 		while(copied2 != null && copied != null){
-			System.out.print("copy2: " + copied2.data + "copy: " + copied.data);
-			System.out.println("");
+			if(copied2.data != copied.data)
+				return false;
 			copied = copied.next;
 			copied2 = copied2.next;
 		}
 	
 		
 		
-		return false;
+		return true;
 	}
 	public Node reverseListItr(Node h){
 		if(h == null || h.next == null){
