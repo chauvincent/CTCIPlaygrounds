@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class LinkedList {
 	private Node head;
@@ -220,36 +221,50 @@ public class LinkedList {
 /*  	Ex: 0 1 2 3 2 1 0
  * 		
  */
-	public Boolean checkPalindromeFirstAttempt(Node head){
-		Node L1 = head;
-		Node L2 = L1;
-		Node rList = reverseList(L2);
-		Boolean foundDiff = false;
-		while(rList != null && L1 != null){
-			if(rList.data == L1.data){
-				
-			}else{
-				foundDiff = true;
-				break;
-			}
-			rList = rList.next;
-			L1 = L1.next;
-		}
+	public Boolean checkPalindromeFirstAttempt(Node h){
+		Node copied = new Node(h, h.data);
+		Node copied2 = new Node(copied, copied.data);
 		
-		return !(foundDiff);
+		while(copied2.data == null)
+			copied2 = copied2.next;
+		while(copied.data == null)
+			copied = copied.next;
+		
+		while(copied2 != null && copied != null){
+			System.out.print("copy2: " + copied2.data + "copy: " + copied.data);
+			System.out.println("");
+			copied = copied.next;
+			copied2 = copied2.next;
+		}
+	
+		
+		
+		return false;
 	}
-	public Node reverseList(Node h){
-		Node nextNode = null;
-		Node currentNode = h.next;
-		Node previousNode = null;
-		while(currentNode != null){
-			nextNode = currentNode.next;
-			previousNode = currentNode; 
-			currentNode = nextNode;	
+	public Node reverseListItr(Node h){
+		if(h == null || h.next == null){
+			return h;
 		}
-		h.next = previousNode;
+		Node currPtr = h;
+		Node nextPtr = currPtr.next;
+		h.next = null;
+		while(currPtr != null && nextPtr != null){
+			Node temp = nextPtr.next;
+			nextPtr.next = currPtr;
+			currPtr = nextPtr;
+			nextPtr = temp;
+		}
 		
-		return h;
+		return currPtr;
+	}
+	public Node reverseListRecursive(Node h){
+		if (h == null || h.next == null)
+			return h;
+		Node second = h.next;
+		head.next = null;
+		Node rest = reverseListRecursive(second);
+		second.next = h;
+		return rest;
 	}
 // Node Class Declaration
 	private class Node{
@@ -258,6 +273,17 @@ public class LinkedList {
 		public Node(Integer data){
 			next = null;
 			this.data = data;
+		}
+		public Node(Node otherNode, Integer otherData){
+			Node temp = otherNode;
+			Node myNext = this;
+			while(temp != null){
+				Node copyNode = new Node(temp.data);
+				myNext.next = copyNode;
+				temp = temp.next;
+				myNext = myNext.next;
+			}
+			
 		}
 		public Integer getData(){
 			return data;
@@ -270,6 +296,13 @@ public class LinkedList {
 		}
 		public void setNext(Node _next){
 			next = _next;
+		}
+		public Object clone(){  
+		    try{  
+		        return super.clone();  
+		    }catch(Exception e){ 
+		        return null; 
+		    }
 		}
 	}
 	public static void main(String[] args) {
@@ -315,7 +348,7 @@ public class LinkedList {
 		newList.addValue(2);
 		newList.addValue(3);
 		newList.addValue(2);
-		newList.addValue(1);
+		newList.addValue(9);
 		newList.addValue(0);
 		Boolean result = newList.checkPalindromeFirstAttempt(newList.head);
 		System.out.print(result);
