@@ -263,6 +263,10 @@ public class LinkedList {
 		}
 		return true;
 	}
+	public Boolean checkPalindromeRecursive(Node h){
+	
+		return true;
+	}
 	public Node reverseListItr(Node h){
 		if(h == null || h.next == null){
 			return h;
@@ -288,7 +292,38 @@ public class LinkedList {
 		second.next = h;
 		return rest;
 	}
+// 2.7 Intersection of Linked List
+/* 	Example:
+ *  3 1 5 9 \ 
+ *           7 2 3
+ *      4 9 /
+ *      
+ *  In Theory:    
+ *  if not same length
+ *      5  9 \
+ *            7 2 3
+ *      4  9 /
+ */
+	
+	public Boolean doesIntersectFirstAttempt(Node h1, Node h2){
+		
+		
+		
+		return false;
+	}
+	public Integer intersectHelper(Node curNode, int k){
 
+		int count = 0;
+		if(curNode == null)
+			return 0;
+		int currentIndex = intersectHelper(curNode.next, k) + 1;
+		if(currentIndex == k){
+			return curNode.data;
+		}		
+		return -1;
+	}
+	
+	
 // Node Class Declaration
 	private class Node{
 		private Node next;

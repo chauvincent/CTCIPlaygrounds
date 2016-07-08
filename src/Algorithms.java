@@ -46,7 +46,7 @@ public class Algorithms {
 		return mid;
 	}
 	// Given an array of distinct integer values, find the number of pairs that have the difference k.
-	// ex: Input: {1, 7, 5, 9, 2, 12, 3}  k = 1 -> there are three pairs (1,3), (3,5), (7,9)
+	// ex: Input: {1, 7, 5, 9, 2, 12, 3}  k = 2 -> there are three pairs (1,3), (3,5), (7,9)
 	static String getPairsWithKDifference(int k, int[] arr){
 		int index, index2;
 		String pairFound;
